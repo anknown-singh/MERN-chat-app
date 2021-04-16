@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <title>Express</title>
+</head>
+
+<body>
+  <h1>Express</h1>
+  <p>Welcome to test app</p>
+  <p>Please Login</p>
+
+    <Label for="uname">UserName : </Label>
+    <input title="Username" type="text" name="uname" id=""><br><br>
+    <Label for="password">Password : </Label>
+    <input title="Password" type="password" name="password" id="">
+
+    <button id="submit" type="submit" name="submit">Login</button>
+
+  <p id="userloginstatus"></p>
+</body>
+<script
+			  src="https://code.jquery.com/jquery-3.6.0.js"
+			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			  crossorigin="anonymous"></script>
+
+        <script>
+          
+          let uname = $("input[name='uname']");
+          let password = $("input[name='password']");
+          
+          window.onload = () => {
+            document.getElementById("submit").onclick = () => { login() };
+          }
+
+          function login(){
+            $.ajax({
+              method: "POST",
+              url: "api/login",
+              data: {
+                username : uname.val(),
+                pword : password.val(),
+              },
+              success: function(data){
+                var loginstatus = data;
+                console.log(data);
+                $("#userloginstatus").html(data);
+
+              }
+              
+            })
+          } 
+
+        </script>
+
+</html>
