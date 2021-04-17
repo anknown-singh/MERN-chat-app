@@ -5,10 +5,12 @@ auth = {}
 
 auth.list = (req, res) => {
     userauth.find({uname: `${req.body.username}`}).exec((err, data)=>{
-        if (err) console.log(err)
-        else if (data) if (req.body.pword !== data[0].pword) {
+        // console.log(data[0].uname)
+        if (err) res.send({err})
+        else if (data.length !== 0 ) if (req.body.pword !== data[0].pword) {
             res.send('Wrong uname/password');
         } else res.send('login succesful')
+        else res.send('Wrong uname/password');
     })
 }
 
