@@ -26,7 +26,7 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
- mongoose.connect('mongodb+srv://anknown:ZXCVasdf1234!@chatCluster.esvjb.mongodb.net/userauth?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
+ mongoose.connect('mongodb+srv://anknown:ZXCVasdf1234!@chatCluster.esvjb.mongodb.net/userauth?retryWrites=true&w=majority', { useNewUrlParser: true })
  .then(() => { console.log('connection succesful')
                 server.listen(port);
                 server.on('error', onError);
